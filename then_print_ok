@@ -1,0 +1,47 @@
+# R script to install many packages needed By Matt Curcio
+
+libraries <- c("rlang",
+               "markdown",
+               "rmarkdown",
+               "doMC",
+               "ggplot2",
+               "bookdown",
+               "blogdown",
+               "Boruta",
+               "C50",
+               "devtools",
+               "caret",
+               "corrplot",
+               "dplyr",
+               "e1071",
+               "ggfortify",
+               "jpeg",
+               "png",
+               "neuralnet",
+               "openssl",
+               "purr",
+               "tidyverse",
+               "xml2",
+               "yaml",
+               "seqinr",
+               "rvest",
+               "beautifyR",
+               "beepr")
+
+library(rlang)
+load_or_install <- function(libaries) {
+  for (library in libraries) {
+    if(!is_installed(library)) {
+      install.packages(library,
+                       repos = "http://lib.stat.cmu.edu/R/CRAN",
+                       dependencies = TRUE)
+    }
+    library(library,
+            character.only = TRUE,
+            quietly = TRUE,
+            verbose = TRUE)
+    print("OK")
+    }
+}
+
+load_or_install(libaries)
