@@ -30,6 +30,8 @@ libraries <- c("markdown",
 install.package("rlang")
 library(rlang)
 
+# Define load_install function
+# ============================
 load_or_install <- function(libaries) {
   for (package in libraries) {
     if(!is_installed(package)) {
